@@ -142,7 +142,7 @@ while True:
 #        print ({LAT, LON})
         publish.single("nexplex/sense", "{\"GID\":" + "301" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
 EOL
-sudo mv /tmp/gps_simple.py /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/gps_simple.py
+sudo mv /tmp/gps_simple.py /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py
 
 sleep 5
    echo
