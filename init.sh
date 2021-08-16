@@ -22,7 +22,7 @@ sudo pip3 install board
 
 sudo mkdir /home/pi/tracker
 git clone https://github.com/eclipse/paho.mqtt.python.git /home/pi/tracker
-cd paho.mqtt.python
+cd /home/pi/tracker/paho.mqtt.python
 sudo python setup.py install
 
 sleep 5
