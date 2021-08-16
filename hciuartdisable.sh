@@ -35,7 +35,7 @@ sudo mv /tmp/hciuart.service  /lib/systemd/system/hciuart.service
 sleep 5
 sudo apt-get update
 sleep 5
-sudo apt-get upgrade
+#sudo apt-get upgrade
 
 echo "${_MAGENTA}Now reboot machine and do the following once booted${_RESET}"
 echo
