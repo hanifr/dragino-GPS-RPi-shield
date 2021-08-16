@@ -21,7 +21,7 @@ sudo pip3 install adafruit-circuitpython-gps
 sudo pip3 install board
 
 git clone https://github.com/eclipse/paho.mqtt.python.git
-cd /paho.mqtt.python
+cd ./paho.mqtt.python
 sudo python setup.py install
 
 sleep 5
