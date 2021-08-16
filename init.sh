@@ -20,7 +20,7 @@ chmod +x hciuartdisable.sh
 sudo pip3 install adafruit-circuitpython-gps
 sudo pip3 install board
 
-git clone https://github.com/eclipse/paho.mqtt.python.git
+git clone https://github.com/eclipse/paho.mqtt.python.git /home/pi/
 cd paho.mqtt.python
 sudo python setup.py install
 
@@ -142,7 +142,7 @@ while True:
 #        print ({LAT, LON})
         publish.single("nexplex/sense", "{\"GID\":" + "301" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
 EOL
-sudo mv /tmp/gps_simple.py /home/pi/paho.mqtt.python/examples/gps_simple.py
+sudo mv /tmp/gps_simple.py /home/pi/paho.mqtt.python/gps_simple.py
 
 sleep 5
    echo
