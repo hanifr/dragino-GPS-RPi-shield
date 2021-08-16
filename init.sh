@@ -20,7 +20,8 @@ chmod +x hciuartdisable.sh
 sudo pip3 install adafruit-circuitpython-gps
 sudo pip3 install board
 
-git clone https://github.com/eclipse/paho.mqtt.python.git /home/pi/
+sudo mkdir /home/pi/tracker
+git clone https://github.com/eclipse/paho.mqtt.python.git /home/pi/tracker
 cd paho.mqtt.python
 sudo python setup.py install
 

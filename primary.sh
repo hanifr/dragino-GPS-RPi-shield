@@ -15,7 +15,7 @@ echo
 # start doing stuff: preparing boot script
 # preparing script background work and work under reboot
 echo "[*] Creating boot script"
-sudo rm /boot/cmdline.txt
+sudo rm -rf /boot/cmdline.txt
 
 sudo cat >/tmp/cmdline.txt <<EOL
 console=serial0,115200 console=tty1 root=PARTUUID=b87affef-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consolespi
