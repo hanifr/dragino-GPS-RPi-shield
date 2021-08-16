@@ -18,7 +18,7 @@ echo "[*] Creating boot script"
 sudo rm -rf /boot/cmdline.txt
 
 sudo cat >/tmp/cmdline.txt <<EOL
-console=serial0,115200 console=tty1 root=PARTUUID=b87affef-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consolespi
+dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
 EOL
 sudo mv /tmp/cmdline.txt /boot/cmdline.txt
 
@@ -30,6 +30,6 @@ echo "${_CYAN}Then enter activate SPI and Serial Port${_RESET}"
 echo
 sleep 5
 echo "${_CYAN}Now execute the following command${_RESET}"
-echo "${_CYAN}\"./hciuartdisable\"${_RESET}"
+echo "${_CYAN}\"./hciuartdisable.sh\"${_RESET}"
 echo
 
