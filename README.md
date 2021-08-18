@@ -8,10 +8,8 @@ sudo raspi-config
 ```
 ## 1 - Change setup for /boot/cmdline.txt to the following
 ```
-sudo nano /boot/cmdline.txt
-+++++++++++++++++++++++++++
 dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
-+++++++++++++++++++++++++++
+
 ```
 
  ## 2 - Execute Main script
