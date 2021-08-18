@@ -43,8 +43,6 @@ while True:
         time.sleep(0)
     rec = PyLora.receive_packet()
     rssi_val = PyLora.packet_rssi()
-#    Data = {"data": `rec`, "rssi": `rssi_val`}
-#    loraData = json.dumps(Data)
     print(rec)
     publish.single("$_topic", rec, hostname="$_domain")
 EOL

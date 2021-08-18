@@ -34,10 +34,13 @@ sudo python setup.py install
 
 sleep 5
 echo "${_CYAN}Please Enter the MQTT domain_name${_RESET} $_domain"
-                read -p "Enter the MQTT domain_name: " _domain
+                read -p "Entered the MQTT domain_name: " _domain
 echo
 echo "${_CYAN}Please Enter the MQTT topic to publish data${_RESET} $_topic"
-                read -p "Enter the MQTT topic_name: " _topic
+                read -p "Entered the MQTT topic_name: " _topic
+echo
+echo "${_CYAN}Please Enter the GPS ID to be published${_RESET} $_GID"
+                read -p "Entered GPS ID: " _GID
 echo
 echo "${_CYAN}You have entered $_domain for MQTT server and $_topic for the topic${_RESET}"
 
@@ -151,7 +154,7 @@ while True:
 #        if gps.height_geoid is not None:
 #        HGEO = "Height geo ID: {} meters".format(gps.height_geoid)
 #        print ({LAT, LON})
-        publish.single("$_topic", "{\"GID\":" + "301" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
+        publish.single("$_topic", "{\"GID\":" + "$_GID" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
 EOL
 sudo mv /tmp/gps_simple.py /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py
 

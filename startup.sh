@@ -32,27 +32,50 @@ EOL
 sudo mv /tmp/startgps.sh /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startgps.sh
 sudo chmod 744 /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startgps.sh
 
-sudo cat >/tmp/startdragino.service <<EOL
+sudo cat >/tmp/loradragino.service <<EOL
 [Unit]
-Description=GPS module service
+Description=LoRa module service
+After=network.target
 [Service]
 Type=simple
 # WorkingDirectory=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples
-ExecStartPre=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startlora.sh
-ExecStart=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startgps.sh
+ExecStart=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startlora.sh
 Restart=on-failure
-# User=do-user
+User=pi
 [Install]
 WantedBy=multi-user.target
 EOL
-sudo mv /tmp/startdragino.service /etc/systemd/system/startdragino.service
-echo "${_YELLOW}[*] Starting startdragino systemd service${_RESET}"
-sudo chmod 664 /etc/systemd/system/startdragino.service
+sudo mv /tmp/loradragino.service /etc/systemd/system/loradragino.service
+echo "${_YELLOW}[*] Starting loradragino systemd service${_RESET}"
+sudo chmod 664 /etc/systemd/system/loradragino.service
 sudo systemctl daemon-reload
-sudo systemctl enable startdragino.service
-sudo systemctl start startdragino.service
-echo "${_YELLOW}To see GPS startup service logs run \"sudo journalctl -u startdragino -f\" command${_RESET}"
+sudo systemctl enable loradragino.service
+sudo systemctl start loradragino.service
 
+sudo cat >/tmp/gpsdragino.service <<EOL
+[Unit]
+Description=GPS module service
+Wants=network.target
+After=loradragino.service
+[Service]
+Type=simple
+# WorkingDirectory=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples
+ExecStart=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startgps.sh
+Restart=on-failure
+User=pi
+[Install]
+WantedBy=multi-user.target
+EOL
+sudo mv /tmp/gpsdragino.service /etc/systemd/system/gpsdragino.service
+echo "${_YELLOW}[*] Starting gpsdragino systemd service${_RESET}"
+sudo chmod 664 /etc/systemd/system/gpsdragino.service
+sudo systemctl daemon-reload
+sudo systemctl enable gpsdragino.service
+sudo systemctl start gpsdragino.service
+
+echo "${_YELLOW}To see GPS startup service logs run \"sudo journalctl -u loradragino -f\" command${_RESET}"
+echo "${_YELLOW}To see LoRa startup service logs run \"sudo journalctl -u gpsdragino -f\" command${_RESET}"
+echo
 echo "${_MAGENTA}Setup Progress....Creating GPS and LoRa startup service:: finished${_RESET}"
 echo
  
