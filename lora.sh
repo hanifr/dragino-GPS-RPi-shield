@@ -28,6 +28,8 @@ echo "${_CYAN}Please Enter the MQTT topic to publish data${_RESET} $_topic"
 sudo cat >/tmp/LoRaRX.py <<EOL
 import PyLora
 import time
+import context  # Ensures paho is in PYTHONPATH
+import paho.mqtt.publish as publish
 import json
 
 PyLora.init()
