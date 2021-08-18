@@ -14,13 +14,18 @@ echo
 sleep 5
 echo "${_MAGENTA}Downloading PyLoRa Library${_RESET}"
 echo
-mkdir LoRaRX
 git clone https://github.com/hanifr/PyLora.git
 cd ./PyLora
 python setup.py build
 sudo python setup.py install
 # setting up LoRa service
-sudo cat >/tmp/Receiver.py <<EOL
+sleep 5
+echo "${_CYAN}Please Enter the MQTT domain_name${_RESET} $_domain"
+                read -p "Enter the MQTT domain_name: " _domain
+echo
+echo "${_CYAN}Please Enter the MQTT topic to publish data${_RESET} $_topic"
+                read -p "Enter the MQTT topic_name: " _topic
+sudo cat >/tmp/LoRaRX.py <<EOL
 import PyLora
 import time
 import json
@@ -38,9 +43,10 @@ while True:
     rssi_val = PyLora.packet_rssi()
 #    Data = {"data": `rec`, "rssi": `rssi_val`}
 #    loraData = json.dumps(Data)
-    print ({rec, rssi_val})
+    print(rec)
+    publish.single("$_topic", rec, hostname="$_domain")
 EOL
-sudo mv /tmp/Receiver.py  /home/pi/dragino-GPS-RPi-shield/LoRaRX/Receiver.py
+sudo mv /tmp/LoRaRX.py  /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/LoRaRX.py
 sleep 5
 sudo apt-get update
 sleep 5
