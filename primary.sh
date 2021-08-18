@@ -22,14 +22,5 @@ dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=d
 EOL
 sudo mv /tmp/cmdline.txt /boot/cmdline.txt
 
-echo "${_MAGENTA}Please do the following${_RESET}"
-echo "${_CYAN}Go to configuration section by${_RESET}"
-echo "${_CYAN}\"sudo raspi-config\"${_RESET}"
-echo
-echo "${_CYAN}Then enter activate SPI and Serial Port${_RESET}"
-echo
-sleep 5
-echo "${_CYAN}Now execute the following command${_RESET}"
-echo "${_CYAN}\"./hciuartdisable.sh\"${_RESET}"
 echo
 

@@ -153,7 +153,7 @@ while True:
 #        print ({LAT, LON})
         publish.single("$_topic", "{\"GID\":" + "301" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
 EOL
-sudo mv /tmp/gps_simple.py /root/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py
+sudo mv /tmp/gps_simple.py /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py
 
 sleep 5
 echo
@@ -161,4 +161,13 @@ echo "${_YELLOW} The GPS is ready for use.${_RESET}"
 echo "${_YELLOW} use Node-Red to invoke the GPS data.${_RESET}"
 echo "${_YELLOW} Please import gps.json into Node-Red.${_RESET}"
 echo
+echo "${_MAGENTA}Please do the following${_RESET}"
+echo "${_CYAN}Go to configuration section by${_RESET}"
+echo "${_CYAN}\"sudo raspi-config\"${_RESET}"
+echo
+echo "${_CYAN}Then enter activate SPI and Serial Port${_RESET}"
+echo
+sleep 5
+echo "${_CYAN}Now execute the following command${_RESET}"
+echo "${_CYAN}\"./hciuartdisable.sh\"${_RESET}"
 sleep 5
