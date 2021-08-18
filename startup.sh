@@ -57,11 +57,13 @@ sudo cat >/tmp/gpsdragino.service <<EOL
 Description=GPS module service
 Wants=network.target
 After=loradragino.service
+StartLimitInterval=400
+StartLimitBurst=3
 [Service]
 Type=simple
-# WorkingDirectory=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples
 ExecStart=/home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startgps.sh
 Restart=on-failure
+RestartSec=90
 User=pi
 [Install]
 WantedBy=multi-user.target
