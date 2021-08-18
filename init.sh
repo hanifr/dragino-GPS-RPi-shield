@@ -15,6 +15,7 @@ sleep 5
 chmod +x initnodered.sh
 chmod +x primary.sh
 chmod +x hciuartdisable.sh
+chmod +x startupgps.sh
 echo "${_MAGENTA}Installation Progress....set local time to Kuala Lumpur${_RESET}"
 echo
 sudo timedatectl set-timezone Asia/Kuala_Lumpur
@@ -152,7 +153,7 @@ while True:
 #        print ({LAT, LON})
         publish.single("$_topic", "{\"GID\":" + "301" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
 EOL
-sudo mv /tmp/gps_simple.py /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py
+sudo mv /tmp/gps_simple.py /root/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py
 
 sleep 5
 echo

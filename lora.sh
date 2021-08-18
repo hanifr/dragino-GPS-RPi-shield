@@ -46,7 +46,7 @@ while True:
     print(rec)
     publish.single("$_topic", rec, hostname="$_domain")
 EOL
-sudo mv /tmp/LoRaRX.py  /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/LoRaRX.py
+sudo mv /tmp/LoRaRX.py  /root/dragino-GPS-RPi-shield/paho.mqtt.python/examples/LoRaRX.py
 sleep 5
 sudo apt-get update
 sleep 5

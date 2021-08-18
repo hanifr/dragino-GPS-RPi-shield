@@ -19,7 +19,7 @@ sudo python /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/LoRaRX.py
 sudo python3 /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py >> /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples.log 2>&1
 
 EOL
-sudo mv /tmp/startup.sh /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startup.sh
+sudo mv /tmp/startup.sh /root/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startup.sh
 
 sudo cat >/tmp/startgps.service <<EOL
 [Unit]
