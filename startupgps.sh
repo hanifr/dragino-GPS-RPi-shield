@@ -20,7 +20,7 @@ sudo python3 /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simpl
 
 EOL
 sudo mv /tmp/startup.sh /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startup.sh
-
+sudo chmod 744 /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/startup.sh
 sudo cat >/tmp/startgps.service <<EOL
 [Unit]
 Description=GPS module service
