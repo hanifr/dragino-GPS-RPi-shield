@@ -15,11 +15,18 @@ sleep 5
 chmod +x initnodered.sh
 chmod +x primary.sh
 chmod +x hciuartdisable.sh
+echo "${_MAGENTA}Installation Progress....set local time to Kuala Lumpur${_RESET}"
+echo
+sudo timedatectl set-timezone Asia/Kuala_Lumpur
 . primary.sh
 # Installation of Python Dependencies and GPS Libaries
+echo "${_MAGENTA}Installation Progress...installation of GPS Python Library${_RESET}"
+echo
 sudo pip3 install adafruit-circuitpython-gps
 sudo pip3 install board
 
+echo "${_MAGENTA}Installation Progress....installation of MQTT PAHO${_RESET}"
+echo
 git clone https://github.com/eclipse/paho.mqtt.python.git
 cd ./paho.mqtt.python
 sudo python setup.py install
@@ -28,7 +35,10 @@ sleep 5
 echo "${_CYAN}Please Enter the MQTT domain_name${_RESET} $_domain"
                 read -p "Enter the MQTT domain_name: " _domain
 echo
-echo "${_CYAN}You have entered $_domain for your MQTT domain name${_RESET}"
+echo "${_CYAN}Please Enter the MQTT topic to publish data${_RESET} $_topic"
+                read -p "Enter the MQTT topic_name: " _topic
+echo
+echo "${_CYAN}You have entered $_domain for MQTT server and $_topic for the topic${_RESET}"
 
 # start doing stuff: preparing script for GPS data acquisition
 # preparing script background work and work under reboot
@@ -140,11 +150,14 @@ while True:
 #        if gps.height_geoid is not None:
 #        HGEO = "Height geo ID: {} meters".format(gps.height_geoid)
 #        print ({LAT, LON})
-        publish.single("nexplex/sense", "{\"GID\":" + "301" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
+        publish.single("$_topic", "{\"GID\":" + "301" + ",\"LAT\":"+LAT+",\"LON\":"+ LON +"}", hostname="$_domain")
 EOL
 sudo mv /tmp/gps_simple.py /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py
 
 sleep 5
-   echo
+echo
 echo "${_YELLOW} The GPS is ready for use.${_RESET}"
+echo "${_YELLOW} use Node-Red to invoke the GPS data.${_RESET}"
+echo "${_YELLOW} Please import gps.json into Node-Red.${_RESET}"
+echo
 sleep 5

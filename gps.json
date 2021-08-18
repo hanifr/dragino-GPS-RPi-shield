@@ -1,0 +1,311 @@
+[
+    {
+        "id": "39db570f05acb21c",
+        "type": "tab",
+        "label": "GPS Tracker",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "dda77fe226fdd84d",
+        "type": "exec",
+        "z": "39db570f05acb21c",
+        "command": "sudo python3 /home/pi/dragino-GPS-RPi-shield/paho.mqtt.python/examples/gps_simple.py",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "GPS-invoke",
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "69477d9bb94bef81"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8c70eb9309aa90fe",
+        "type": "inject",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "dda77fe226fdd84d"
+            ]
+        ]
+    },
+    {
+        "id": "69477d9bb94bef81",
+        "type": "debug",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "74f98b0e01b1f8a9",
+        "type": "mqtt in",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "topic": "nexplex/sense",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "91d5b65057a0f7a1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 270,
+        "y": 40,
+        "wires": [
+            [
+                "e77388f1655bbabd"
+            ]
+        ]
+    },
+    {
+        "id": "e77388f1655bbabd",
+        "type": "json",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 430,
+        "y": 40,
+        "wires": [
+            [
+                "69477d9bb94bef81"
+            ]
+        ]
+    },
+    {
+        "id": "c07e5e17d95f5a7b",
+        "type": "inject",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "b90b10e40ff44446",
+                "01a758198ceebe4c"
+            ]
+        ]
+    },
+    {
+        "id": "01a758198ceebe4c",
+        "type": "change",
+        "z": "39db570f05acb21c",
+        "name": "set to pid",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "pid",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "b90b10e40ff44446"
+            ]
+        ]
+    },
+    {
+        "id": "b90b10e40ff44446",
+        "type": "exec",
+        "z": "39db570f05acb21c",
+        "command": "kill",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "OFF GPS",
+        "x": 560,
+        "y": 240,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c85f132a7d455215",
+        "type": "status",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "scope": [
+            "9d60c445.abd368"
+        ],
+        "x": 240,
+        "y": 300,
+        "wires": [
+            [
+                "3259d15d3d7e7d5b"
+            ]
+        ]
+    },
+    {
+        "id": "3259d15d3d7e7d5b",
+        "type": "function",
+        "z": "39db570f05acb21c",
+        "name": "get pid",
+        "func": "if(msg.status.text){\n    let pid = msg.status.text.split(':');\n    msg.payload = pid[1];\n    return msg;\n} else {\n    return null;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 400,
+        "y": 300,
+        "wires": [
+            [
+                "fc532136881ce56b"
+            ]
+        ]
+    },
+    {
+        "id": "fc532136881ce56b",
+        "type": "change",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pid",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79d47252bf6232a2",
+        "type": "link in",
+        "z": "39db570f05acb21c",
+        "name": "ON_Rx_out",
+        "links": [
+            "2823a6de.b93aaa"
+        ],
+        "x": 155,
+        "y": 200,
+        "wires": [
+            [
+                "7bccd535978c8882"
+            ]
+        ]
+    },
+    {
+        "id": "7bccd535978c8882",
+        "type": "switch",
+        "z": "39db570f05acb21c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "dda77fe226fdd84d"
+            ],
+            [
+                "01a758198ceebe4c"
+            ]
+        ]
+    },
+    {
+        "id": "91d5b65057a0f7a1",
+        "type": "mqtt-broker",
+        "name": "TRON",
+        "broker": "tron.airmode.live",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
