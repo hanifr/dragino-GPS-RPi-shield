@@ -103,7 +103,5 @@ sudo systemctl start startupboot.service
 sleep 5
 echo
 echo "${_YELLOW} The MQTT rebooting protocol is ready for use.${_RESET}"
-
-
 echo "${_MAGENTA}Installation Progress....setup for rebooting protocol :: finished${_RESET}"
 echo
