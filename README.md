@@ -25,7 +25,7 @@ cd dragino-GPS-RPi-shield
 
 ## 4 - Optional: Run GPS and LoRa services on boot
 ```
-./startup.sh
+./dragino-GPS-RPi-shield/startup.sh
 ```
 
 ## 5 - Optional: Daemon for MQTT rebooting protocol
