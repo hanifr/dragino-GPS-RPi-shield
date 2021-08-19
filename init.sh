@@ -15,7 +15,8 @@ sleep 5
 chmod +x initnodered.sh
 chmod +x primary.sh
 chmod +x hciuartdisable.sh
-chmod +x startupgps.sh
+chmod +x startup.sh
+chmod +x reboot.sh
 echo "${_MAGENTA}Installation Progress....set local time to Kuala Lumpur${_RESET}"
 echo
 sudo timedatectl set-timezone Asia/Kuala_Lumpur
