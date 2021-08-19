@@ -172,6 +172,8 @@ echo
 echo "${_CYAN}Then enter activate SPI and Serial Port${_RESET}"
 echo
 sleep 5
-echo "${_CYAN}Now execute the following command${_RESET}"
+echo "${_CYAN}Now executing the following task, please wait${_RESET}"
 echo "${_CYAN}\"./hciuartdisable.sh\"${_RESET}"
+
 sleep 5
+. hciuartdisable.sh
