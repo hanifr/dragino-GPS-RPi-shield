@@ -31,10 +31,10 @@ cd dragino-GPS-RPi-shield
 ## 5 - Optional: Daemon for MQTT rebooting protocol
 ### This script will run MQTT listener to the subscribed topic and if any msg.payload received, the RPi will reboot, so pay attention on the MQTT topic, i.e., use a different and unique topic for this purpose.
 ```
-./reboot.sh
+./dragino-GPS-RPi-shield/reboot.sh
 ```
 
 ## 6 - Optional: Run Node-red on boot
 ```
-./initnodered.sh
+./dragino-GPS-RPi-shield/initnodered.sh
 ```
