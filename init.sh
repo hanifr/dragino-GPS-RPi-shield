@@ -176,4 +176,4 @@ echo "${_CYAN}Now executing the following task, please wait${_RESET}"
 echo "${_CYAN}\"./hciuartdisable.sh\"${_RESET}"
 
 sleep 5
-. hciuartdisable.sh
+./hciuartdisable.sh

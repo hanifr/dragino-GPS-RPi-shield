@@ -16,7 +16,7 @@ echo "${_MAGENTA}Installation Progress...installation a Mosquitto broker that is
 echo
 sudo apt-get install mosquitto
 #sudo apt-get install python3-pip
-#sudo pip3 install paho-mqtt
+sudo pip3 install paho-mqtt
 sleep 5
 echo "${_CYAN}Please Enter the MQTT domain_name${_RESET} $_domain"
                 read -p "Entered the MQTT domain_name: " _domain
