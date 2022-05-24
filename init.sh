@@ -17,6 +17,7 @@ chmod +x primary.sh
 chmod +x hciuartdisable.sh
 chmod +x lora.sh
 chmod +x loradaemon.sh
+chmod +x loraControl.sh
 chmod +x reboot.sh
 echo "${_MAGENTA}Installation Progress....set local time to Kuala Lumpur${_RESET}"
 echo

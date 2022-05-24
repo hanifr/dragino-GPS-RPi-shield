@@ -44,10 +44,11 @@ sudo systemctl daemon-reload
 sudo systemctl enable loradragino.service
 sudo systemctl start loradragino.service
 
-
-
 echo "${_YELLOW}To see LoRa startup service logs run \"sudo journalctl -u loradragino -f\" command${_RESET}"
 echo
 echo "${_MAGENTA}Setup Progress....Creating LoRa startup service:: finished${_RESET}"
+echo
+sleep 5
+echo "${_MAGENTA}If you want a daemon service to restart LoRa service please run \"./loraControl.sh\" command${_RESET}"
 echo
  
