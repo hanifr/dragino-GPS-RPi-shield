@@ -52,5 +52,5 @@ sudo apt-get update
 sleep 5
 #sudo apt-get upgrade
 
-echo "${_MAGENTA}Setup Progress....LoRa installation :: finished$${_RESET}"
+echo "${_MAGENTA}Setup Progress....LoRa installation :: finished${_RESET}"
 echo

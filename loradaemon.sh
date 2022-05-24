@@ -9,7 +9,7 @@ _CYAN=`tput setaf 6`
 _RESET=`tput sgr0`
 # printing greetings
 
-./lora.sh
+. lora.sh
 echo "${_MAGENTA}Setup Progress....Creating LoRa startup service:: started${_RESET}"
 echo
 sudo cat >/tmp/startlora.sh <<EOL
